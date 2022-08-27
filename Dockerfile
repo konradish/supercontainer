@@ -1,8 +1,8 @@
 FROM debian
 # grep docker /etc/group | cut -d: -f3
 # Set the docker_gid to the above value
-ENV DOCKER_GID=998
-ENV USER_ACCT=kodell
+ARG DOCKER_GID
+ARG USER_ACCT
 RUN apt update && apt install -y openssl sudo git
 RUN adduser --disabled-password --gecos '' kodell
 RUN adduser kodell sudo
