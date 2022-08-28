@@ -13,7 +13,12 @@ if [ ! -e "$CONTAINER_ALREADY_STARTED" ]; then
         git clone https://github.com/konradish/dotfiles
     fi
 
-    ./scripts/setup_env.sh install_plugins dotfiles unstow
+    mv $HOME/.zshrc $HOME/.zshrc-backup
+    mv $HOME/.oh-my-zsh $HOME/.oh-my-zsh-backup
+    ./scripts/setup_env.sh install_omz 
+    rm $HOME/.zshrc # Remove the default zshrc file
+    ./scripts/setup_env.sh unstow
+    (cd scripts && ./setup_env.sh install_plugins)
 fi
 
 exec zsh
