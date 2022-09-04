@@ -10,6 +10,7 @@ fi
 echo $username > ./username.txt
 
 # Get the group ID from the host's group `docker`
+# this is so we can match the gid in the container to the host gid for permissions to match
 DOCKER_GID=$(getent group docker | cut -d: -f3)
 if [ -z "$DOCKER_GID" ]; then
   echo "Docker group not found. Exiting..."

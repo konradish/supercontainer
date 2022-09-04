@@ -12,7 +12,7 @@ RUN sudo groupadd -g ${DOCKER_GID} docker && sudo usermod -aG docker ${USER_ACCT
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER ${USER_ACCT}
 WORKDIR /home/${USER_ACCT}
-RUN git clone https://github.com/konradish/scripts && (cd scripts && ./setup_env.sh install_software install_gh)
+RUN git clone https://github.com/konradish/scripts && (cd scripts && ./setup_env.sh install_software install_fzf install_gh)
 RUN sudo ./scripts/install_docker.sh
 ENTRYPOINT /home/$USER_ACCT/startup.sh
 
